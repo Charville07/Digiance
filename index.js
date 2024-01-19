@@ -1,22 +1,6 @@
-import { Navigation } from "react-native-navigation";
-import SplashScreen from 'react-native-splash-screen'
-import App from './App';
+import 'react-native-gesture-handler';
+import {registerRootComponent} from 'rnn-screens';
 
+import {App, beforeStart} from './App';
 
-Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
-Navigation.events().registerAppLaunchedListener(() => {
-    SplashScreen.hide();
-    Navigation.setRoot({
-        root: {
-            stack: {
-                children: [
-                    {
-                        component: {
-                            name: 'com.myApp.WelcomeScreen'
-                        }
-                    }
-                ]
-            }
-        }
-    });
-});
+registerRootComponent(App, {beforeStart}); 
